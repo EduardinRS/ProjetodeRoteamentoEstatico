@@ -1,0 +1,117 @@
+-------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------SWITCH-01----------------------------------------------------------------------
+
+enable
+configure terminal
+hostname SW-01
+banner motd "Acesso Apenas Para Pessoas Autorizadas"
+enable secret SenhadaEnable
+ip domain-name rede1.local
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret SenhaEst
+line console 0
+password SenhadaConsole
+login local
+exit
+service password-encryption
+line vty 0 15
+password SenhadaVTY
+transport input ssh
+exec-timeout 5
+service password-encryption
+interface vlan 1
+ip address 192.168.1.30 255.255.255.224
+description REDE 192.168.1.0/27
+no shutdown
+exit
+ip default-gateway 192.168.1.1
+do wr
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------SWITCH-02----------------------------------------------------------------------
+
+enable
+configure terminal
+hostname SW-02
+banner motd "Acesso Apenas Para Pessoas Autorizadas"
+enable secret SenhadaEnable
+ip domain-name rede2.local
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret SenhaEst
+line console 0
+password SenhadaConsole
+login local
+exit
+service password-encryption
+line vty 0 15
+password SenhadaVTY
+transport input ssh
+exec-timeout 5
+service password-encryption
+interface vlan 1
+ip address 10.40.31.254 255.255.240.0
+description REDE 10.40.16.0/20
+no shutdown
+exit
+ip default-gateway 10.40.16.1
+do wr
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------SWITCH-03----------------------------------------------------------------------
+
+enable
+configure terminal
+hostname SW-03
+banner motd "Acesso Apenas Para Pessoas Autorizadas"
+enable secret SenhadaEnable
+ip domain-name rede3.local
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret SenhaEst
+line console 0
+password SenhadaConsole
+login local
+exit
+service password-encryption
+line vty 0 15
+password SenhadaVTY
+transport input ssh
+exec-timeout 5
+service password-encryption
+interface vlan 1
+ip address 192.168.0.126 255.255.255.128
+description REDE 192.168.0.0/25
+no shutdown
+exit
+ip default-gateway 192.168.0.1
+do wr
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------SWITCH-04----------------------------------------------------------------------
+
+enable
+configure terminal
+hostname SW-04
+banner motd "Acesso Apenas Para Pessoas Autorizadas"
+enable secret SenhadaEnable
+ip domain-name rede4.local
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret SenhaEst
+line console 0
+password SenhadaConsole
+login local
+exit
+service password-encryption
+line vty 0 15
+password SenhadaVTY
+transport input ssh
+exec-timeout 5
+service password-encryption
+interface vlan 1
+ip address 172.16.43.254 255.255.254.0
+description REDE 172.16.42.0/23
+no shutdown
+exit
+ip default-gateway 172.16.42.1
+do wr
+
+-------------------------------------------------------------------------------------------------------------------------------------------
